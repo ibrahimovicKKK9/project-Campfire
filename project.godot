@@ -48,8 +48,9 @@ sprint={
 
 [layer_names]
 
-2d_physics/layer_1="Player"
-2d_physics/layer_2="Harta_Karun"
+2d_physics/layer_1="player"
+2d_physics/layer_2="fish"
+<<<<<<<HEAD2d_physics/layer_1="player"
 
 [mono]
 
