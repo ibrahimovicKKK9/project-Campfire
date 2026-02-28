@@ -9,15 +9,26 @@ export var Stamina_Player = 100 # Nilai Stamina Player
 export var Stamina_time_ngurang = 15 # Nilai Waktu Stamina Ngurang Player
 export var Stamina_time_regen = 12 # Nilai Waktu Stamina regen Player
 
+export var Oksigen_Player = 100 # Nilai Oksigen Player
+export var Oksigen_time_ngurang = 1 # Nilai Waktu Stamina Ngurang Player
+export var Oksigen_time_regen = 3 # Nilai Waktu Stamina regen Player
+var Sedang_diarea_oxigen = false # Nilai Boolean oksigen
+
 onready var AnimatedPlayer = $AnimatedSprite
 onready var Label_Stamina = $"Label Stamina"
 onready var Label_Speed = $"Label Speed"
+onready var Label_Oxigen = $"Label Oksigen"
 
 var velocity = Vector2.ZERO
 
 func _process(delta):
 	Label_Speed.text = "Speed: " + str(speed)
 	Label_Stamina.text = "Stamina: " + str(Stamina_Player)
+	Label_Oxigen.text = "Oxigen: " + str(Oksigen_Player)
+	
+	Oksigen_Player -= Oksigen_time_ngurang * delta
+	
+	Oksigen_Player = clamp(Oksigen_Player, 0, 100)
 
 func _physics_process(delta):
 	# 1. Ambil input dari keyboard (Panah atau WASD)
@@ -50,5 +61,11 @@ func _physics_process(delta):
 		Stamina_Player += Stamina_time_regen * delta
 		
 	Stamina_Player = clamp(Stamina_Player, 0, 100)
+	
+	if Sedang_diarea_oxigen:
+		Oksigen_Player += Oksigen_time_regen * delta
+	else:
+		Oksigen_Player -= Oksigen_time_ngurang * delta
+	
 	# 4. Gerakkan Player
 	velocity = move_and_slide(velocity)
