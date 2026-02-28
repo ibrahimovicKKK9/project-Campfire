@@ -1,16 +1,33 @@
 extends KinematicBody2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+#player
+var player = null
+
+#speed
+export var speed = 100
+
+#direction
+#arah
+var direction  = -1
 
 
-# Called when the node enters the scene tree for the first time.
+#connect from area2d
 func _ready():
-	pass # Replace with function body.
+	$Area2D.connect("body_entered",self,"_on_body_entered")
+	$Area2D.connect("body_exited",self,"_on_body_exited")
+	
+# if player on area2d
+func _on_body_entered(body):
+	if	body.name == "player":
+		player = body
+
+# if player exit
+func _on_body_exited(body):
+	if body.name == "player":
+		player = null
+		
+func _physics_process(delta):
+	
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
