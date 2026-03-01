@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/dragon-studio-menu-open-433000.mp3-fa908ac2f077691648e0306b9ba2799e.mp3str"
+
+[deps]
+
+source_file="res://Main_Menu/Audio MP3/dragon-studio-menu-open-433000.mp3"
+dest_files=[ "res://.import/dragon-studio-menu-open-433000.mp3-fa908ac2f077691648e0306b9ba2799e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

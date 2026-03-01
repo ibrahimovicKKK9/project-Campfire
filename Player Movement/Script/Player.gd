@@ -12,19 +12,21 @@ export var Stamina_time_regen = 12 # Nilai Waktu Stamina regen Player
 export var Oksigen_Player = 100 # Nilai Oksigen Player
 export var Oksigen_time_ngurang = 1 # Nilai Waktu Stamina Ngurang Player
 export var Oksigen_time_regen = 3 # Nilai Waktu Stamina regen Player
-var Sedang_diarea_oxigen = false # Nilai Boolean oksigen
+export var Sedang_diarea_oxigen = false # Nilai Boolean oksigen
 
 onready var AnimatedPlayer = $AnimatedSprite
-onready var Label_Stamina = $"Label Stamina"
-onready var Label_Speed = $"Label Speed"
-onready var Label_Oxigen = $"Label Oksigen"
+onready var Progress_Stamina = $"ProgressBar Stamina"
+onready var Progress_Oxigen = $"ProgressBar Oksigen"
+
+onready var bubble_particles = $CPUParticles2D
 
 var velocity = Vector2.ZERO
 
+func _ready():
+	Progress_Oxigen.value = Oksigen_Player
+	Progress_Stamina.value = Stamina_Player
+
 func _process(delta):
-	Label_Speed.text = "Speed: " + str(speed)
-	Label_Stamina.text = "Stamina: " + str(Stamina_Player)
-	Label_Oxigen.text = "Oxigen: " + str(Oksigen_Player)
 	
 	Oksigen_Player -= Oksigen_time_ngurang * delta
 	
@@ -39,19 +41,32 @@ func _physics_process(delta):
 	# 2. Normalisasi (Agar jalan miring tidak lebih cepat dari jalan lurus)
 	input_vector = input_vector.normalized()
 	
-	# 3. Tentukan kecepatan target
 	if input_vector != Vector2.ZERO:
-		# Jika mencet tombol, akselerasi ke arah tersebut
+		AnimatedPlayer.play("swim")
 		velocity = velocity.linear_interpolate(input_vector * speed, 0.1)
 		
+		# SISTEM ROTASI: Mengikuti arah gerak
+		# velocity.angle() akan memberikan sudut dalam radian ke arah mana kita bergerak
+		AnimatedPlayer.rotation = velocity.angle()
 		
-		if input_vector.x > 0:
-			AnimatedPlayer.flip_h = false 
-		elif input_vector.x < 0:
-			AnimatedPlayer.flip_h = true  
+		# Karena rotation sudah menangani arah, kita tidak perlu flip_v lagi.
+		# Tapi kita perlu cek flip_h agar perut karakter tidak terbalik saat ke kiri
+		if input_vector.x < 0:
+			AnimatedPlayer.flip_v = true # Memutar sprite agar tidak terlihat terbalik (upside down)
+		else:
+			AnimatedPlayer.flip_v = false
+			
 	else:
-		# Jika dilepas, perlambat sampai berhenti (Efek gesekan air)
+		AnimatedPlayer.play("idle")
 		velocity = velocity.linear_interpolate(Vector2.ZERO, friction)
+		
+	if input_vector != Vector2.ZERO:
+		# Aktifkan gelembung saat berenang
+		bubble_particles.emitting = true
+		
+		bubble_particles.rotation = AnimatedPlayer.rotation + PI
+	else:
+		bubble_particles.emitting = false
 		
 	if Input.is_action_pressed("sprint") and Stamina_Player > 0:
 		speed = speed_sprint
@@ -66,6 +81,9 @@ func _physics_process(delta):
 		Oksigen_Player += Oksigen_time_regen * delta
 	else:
 		Oksigen_Player -= Oksigen_time_ngurang * delta
+		
+	Progress_Oxigen.value = Oksigen_Player
+	Progress_Stamina.value = Stamina_Player
 	
 	# 4. Gerakkan Player
 	velocity = move_and_slide(velocity)
