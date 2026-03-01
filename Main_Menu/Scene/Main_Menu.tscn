@@ -1,0 +1,272 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Fonts/Daydream DEMO.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Main_Menu/Script/Quit_Game.gd" type="Script" id=2]
+[ext_resource path="res://Main_Menu/Script/Play_Game.gd" type="Script" id=3]
+[ext_resource path="res://Fonts/Pixellari.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Main_Menu/Audio MP3/dragon-studio-menu-open-433000.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Main_Menu/Scene/Animation_Main_Menu.gd" type="Script" id=6]
+[ext_resource path="res://Main_Menu/Asset/download (8).jpeg" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.329412, 0.329412, 0.329412, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 0.992157, 0, 1 )
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.729412, 0.721569, 0.721569, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Play_Game:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.73, 0.7227, 0.7227, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/Quit Game:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.729412, 0.721569, 0.721569, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/Judul Game:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Background:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "fade"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Play_Game:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.73, 0.7227, 0.7227, 0 ), Color( 0.729412, 0.721569, 0.721569, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Quit Game:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.729412, 0.721569, 0.721569, 0 ), Color( 0.729412, 0.721569, 0.721569, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Panel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.729412, 0.721569, 0.721569, 0 ), Color( 0.729412, 0.721569, 0.721569, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/Judul Game:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "fade_panel"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasLayer"]
+position = Vector2( 467, 386 )
+stream = ExtResource( 5 )
+
+[node name="Judul Game" type="Label" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -148.0
+margin_top = 68.0
+margin_right = 148.0
+margin_bottom = 117.0
+custom_fonts/font = SubResource( 1 )
+text = "Diving to 
+the 
+dark"
+align = 1
+
+[node name="Play_Game" type="Button" parent="CanvasLayer"]
+modulate = Color( 0.73, 0.7227, 0.7227, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.0
+margin_top = 86.0
+margin_right = 45.0
+margin_bottom = 116.0
+custom_colors/font_color_hover = Color( 0.968627, 1, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Play Game"
+flat = true
+script = ExtResource( 3 )
+
+[node name="Quit Game" type="Button" parent="CanvasLayer"]
+modulate = Color( 0.729412, 0.721569, 0.721569, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.0
+margin_top = 129.0
+margin_right = 45.0
+margin_bottom = 159.0
+rect_scale = Vector2( 1.01299, 1.05509 )
+custom_colors/font_color_hover_pressed = Color( 1, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.917647, 1, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Quit Game"
+flat = true
+script = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color( 0.729412, 0.721569, 0.721569, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -748.0
+margin_top = 65.0
+margin_right = -708.0
+margin_bottom = 105.0
+rect_scale = Vector2( 41.9564, 2.84845 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="Box1" type="Panel" parent="."]
+visible = false
+margin_left = 455.248
+margin_top = 391.63
+margin_right = 471.444
+margin_bottom = 406.67
+custom_styles/panel = SubResource( 5 )
+
+[node name="Box2" type="Panel" parent="."]
+visible = false
+margin_left = 456.16
+margin_top = 436.37
+margin_right = 472.356
+margin_bottom = 451.41
+custom_styles/panel = SubResource( 5 )
+
+[node name="Download(8)" type="Sprite" parent="."]
+position = Vector2( 514, 301 )
+scale = Vector2( 1.69079, 1.77193 )
+texture = ExtResource( 7 )
+
+[node name="Background" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 6 )
+anims/fade = SubResource( 7 )
+anims/fade_panel = SubResource( 8 )
+script = ExtResource( 6 )
+
+[connection signal="mouse_entered" from="CanvasLayer/Play_Game" to="CanvasLayer/Play_Game" method="_on_Play_Game_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Play_Game" to="CanvasLayer/Play_Game" method="_on_Play_Game_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Play_Game" to="CanvasLayer/Play_Game" method="_on_Play_Game_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Quit Game" to="CanvasLayer/Quit Game" method="_on_Quit_Game_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Quit Game" to="CanvasLayer/Quit Game" method="_on_Quit_Game_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Quit Game" to="CanvasLayer/Quit Game" method="_on_Quit_Game_pressed"]
