@@ -1,47 +1,43 @@
 extends KinematicBody2D
 
+var speed = 150
+var velocity = Vector2()
+var target_player = null
 
+onready var area_deteksi = $AreaDeteksi
+onready var area_kill = $AreaKill
+onready var sprite = $Sprite
 
-#speed
-export var speed = 100
-
-#direction
-#arah
-var direction  = -1
-
-
-var velocity = Vector2.ZERO
-
-
-#connect from area2d
 func _ready():
-	$Area2D.connect("body_entered", self, "_on_Area2D_body_entered")
-	print("Area monitoring:", $Area2D.monitoring)
+	print("Fish Ready!")
+	area_deteksi.connect("area_entered", self, "_on_area_deteksi_entered")
+	area_kill.connect("area_entered", self, "_on_area_kill_entered")
+
+func _physics_process(_delta):
+	if target_player:
+		chase_player()
+	else:
+		velocity = Vector2.ZERO
 	
-# if player on area2d
+	move_and_slide(velocity)
 
-func _on_Area2D_body_entered(body):
-	if body.name == "Player":
-		get_tree().reload_current_scene()
-
+func chase_player():
+	var direction = position.direction_to(target_player.position)
+	velocity = direction * speed
 	
+	if direction.x < 0:
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
 
-		
-func _physics_process(delta):
-	velocity.x = direction * speed
-	velocity = move_and_slide(velocity)
+# Cek semua yang masuk area (bukan hanya player)
+func _on_area_deteksi_entered(area):
+	print("Ada yang masuk AreaDeteksi: ", area.name)
+	print("Groupnya: ", area.get_groups())
 	
-	if $RayCast2D.is_colliding():
-		direction *= -1
-		$RayCast2D.cast_to.x *= -1
-		
-  
+	if area.is_in_group("player"):
+		target_player = area.get_parent()
 
-
-
-
-
-
-
-
-
+func _on_area_kill_entered(area):
+	if area.is_in_group("player"):
+		area.get_parent().queue_free()

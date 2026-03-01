@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/Jersey10-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://script/if_die.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 126
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.752941, 0.121569, 0.121569, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color( 0.0627451, 0.0627451, 0.0627451, 0.6 )
+shadow_size = 8
+shadow_offset = Vector2( -0.985, 0 )
+
+[node name="if_die" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -155.0
+margin_right = 155.0
+margin_bottom = 136.0
+custom_fonts/font = SubResource( 1 )
+text = "you die"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = -63.5
+margin_right = 70.0
+margin_bottom = 63.5
+custom_constants/separation = 27
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="repeat" type="Button" parent="VBoxContainer"]
+margin_right = 140.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 140, 50 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+text = "Repeat"
+
+[node name="menu" type="Button" parent="VBoxContainer"]
+margin_top = 77.0
+margin_right = 140.0
+margin_bottom = 127.0
+rect_min_size = Vector2( 140, 50 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+text = "Menu"
+
+[connection signal="pressed" from="VBoxContainer/repeat" to="." method="_on_repeat_pressed"]

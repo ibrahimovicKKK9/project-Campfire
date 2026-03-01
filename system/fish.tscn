@@ -1,34 +1,51 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://script/fish.gd" type="Script" id=1]
+[ext_resource path="res://script/fishc.gd" type="Script" id=1]
 [ext_resource path="res://individual_sheets/male_hero_template-design.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 60.5, 22.375 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 13.3417
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=2]
+radius = 220.102
 
-[node name="fish" type="KinematicBody2D"]
-position = Vector2( 296, 107 )
-collision_layer = 2
+[sub_resource type="CircleShape2D" id=3]
+radius = 24.0208
+
+[node name="Fish" type="KinematicBody2D"]
 script = ExtResource( 1 )
+chase_speed = 100
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="wallCheck" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( -67, -1 )
+collision_mask = 4
+
+[node name="visionRay" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( -150, 0 )
+collision_mask = 5
+
+[node name="AreaDeteksi" type="Area2D" parent="."]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 2, 2 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeteksi"]
+position = Vector2( 3, 1 )
+scale = Vector2( 0.492, 0.492 )
 shape = SubResource( 2 )
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( -13, 2 )
-enabled = true
-cast_to = Vector2( -27, 0 )
+[node name="AreaKill" type="Area2D" parent="."]
+collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaKill"]
 shape = SubResource( 3 )
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="AreaDeteksi" to="." method="_on_AreaDeteksi_body_entered"]
+[connection signal="body_exited" from="AreaDeteksi" to="." method="_on_AreaDeteksi_body_exited"]
+[connection signal="body_entered" from="AreaKill" to="." method="_on_AreaKill_body_entered"]

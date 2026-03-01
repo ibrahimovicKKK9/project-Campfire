@@ -14,6 +14,14 @@ config/name="Campfire-Project"
 run/main_scene="res://Player Movement/Scene/PlayerScene.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+If_die="*res://interface/if_die.tscn"
+
+[global]
+
+wall=false
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
@@ -50,6 +58,7 @@ sprint={
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="fish"
+2d_physics/layer_3="wall"
 <<<<<<<HEAD2d_physics/layer_1="player"
 
 [mono]
