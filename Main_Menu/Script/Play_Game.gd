@@ -20,6 +20,8 @@ func _ready():
 
 
 func _on_Play_Game_pressed():
+	get_tree().paused = false
+	
 	print("Game dimulai")
 	AudioMP3.play() # Suara Boom mulai
 	
@@ -32,7 +34,7 @@ func _on_Play_Game_pressed():
 	yield(AnimationFade, "animation_finished")
 	
 	# Pindah scene tepat saat layar sudah gelap
-	get_tree().change_scene("res://Player Movement/Scene/PlayerScene.tscn")
+	get_tree().change_scene("res://world/world.tscn")
 
 
 

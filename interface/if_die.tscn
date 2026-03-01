@@ -71,3 +71,4 @@ custom_styles/normal = SubResource( 2 )
 text = "Menu"
 
 [connection signal="pressed" from="VBoxContainer/repeat" to="." method="_on_repeat_pressed"]
+[connection signal="pressed" from="VBoxContainer/menu" to="." method="_on_menu_pressed"]

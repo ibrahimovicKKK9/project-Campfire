@@ -17,15 +17,12 @@ func _ready():
 
 
 func _on_harta_karun_body_entered(body):
-	if taken:
-		return
+	if body.name == "Player":
 		taken = true
 		monitoring = false
 		$CollisionShape2D.disabled = true
 		$AudioStreamPlayer2D.play()
 		hide()
+		Win.show()
 		
-		
-		yield(get_tree().create_timer(0.6),"timeout")
-		queue_free()
 		

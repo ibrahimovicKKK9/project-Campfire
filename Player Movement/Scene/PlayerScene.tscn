@@ -108,7 +108,7 @@ position = Vector2( 6.5, 3.5 )
 shape = SubResource( 4 )
 
 [node name="Player" type="KinematicBody2D" parent="." groups=["player"]]
-position = Vector2( 512, 233 )
+position = Vector2( 517, 239 )
 script = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -157,6 +157,13 @@ amount = 10
 spread = 30.0
 gravity = Vector2( 0, -50 )
 initial_velocity = 20.0
+
+[node name="Panel" type="Panel" parent="Player"]
+modulate = Color( 0, 0.616667, 1, 0.431373 )
+margin_left = -499.0
+margin_top = -249.0
+margin_right = 524.0
+margin_bottom = 275.0
 
 [connection signal="body_entered" from="Isi Regen" to="Isi Regen" method="_on_Isi_Regen_body_entered"]
 [connection signal="body_exited" from="Isi Regen" to="Isi Regen" method="_on_Isi_Regen_body_exited"]

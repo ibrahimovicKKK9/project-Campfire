@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/dragon-studio-deep-sea-underwater-ambience-472383.mp3-c9d781684a0056f19a1ff8ae0b908d08.mp3str"
+
+[deps]
+
+source_file="res://dragon-studio-deep-sea-underwater-ambience-472383.mp3"
+dest_files=[ "res://.import/dragon-studio-deep-sea-underwater-ambience-472383.mp3-c9d781684a0056f19a1ff8ae0b908d08.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

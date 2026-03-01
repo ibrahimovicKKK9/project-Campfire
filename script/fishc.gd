@@ -3,7 +3,7 @@ extends KinematicBody2D
 export var patrol_speed = 100
 export var chase_speed = 180
 export var wall_distance = 60
-export var vision_distance = 200
+export var vision_distance = 500
 
 var velocity = Vector2.ZERO
 var direction = -1

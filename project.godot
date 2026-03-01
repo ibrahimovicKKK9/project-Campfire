@@ -11,12 +11,14 @@ config_version=4
 [application]
 
 config/name="Campfire-Project"
-run/main_scene="res://world/world.tscn"
+run/main_scene="res://Main_Menu/Scene/Main_Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 If_die="*res://interface/if_die.tscn"
+text_objective="res://Player Movement/Scene/PlayerScene.tscn"
+Win="*res://interface/win.tscn"
 
 [global]
 
