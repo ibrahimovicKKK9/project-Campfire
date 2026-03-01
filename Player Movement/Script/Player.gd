@@ -15,16 +15,18 @@ export var Oksigen_time_regen = 3 # Nilai Waktu Stamina regen Player
 var Sedang_diarea_oxigen = false # Nilai Boolean oksigen
 
 onready var AnimatedPlayer = $AnimatedSprite
-onready var Label_Stamina = $"Label Stamina"
+onready var Progress_Stamina = $"ProgressBar Stamina"
 onready var Label_Speed = $"Label Speed"
-onready var Label_Oxigen = $"Label Oksigen"
+onready var Progress_Oxigen = $"ProgressBar Oksigen"
 
 var velocity = Vector2.ZERO
 
+func _ready():
+	Progress_Oxigen.value = Oksigen_Player
+	Progress_Stamina.value = Stamina_Player
+
 func _process(delta):
-	Label_Speed.text = "Speed: " + str(speed)
-	Label_Stamina.text = "Stamina: " + str(Stamina_Player)
-	Label_Oxigen.text = "Oxigen: " + str(Oksigen_Player)
+	Label_Speed.text = "" + str(speed) + "%"
 	
 	Oksigen_Player -= Oksigen_time_ngurang * delta
 	
@@ -66,6 +68,9 @@ func _physics_process(delta):
 		Oksigen_Player += Oksigen_time_regen * delta
 	else:
 		Oksigen_Player -= Oksigen_time_ngurang * delta
+		
+	Progress_Oxigen.value = Oksigen_Player
+	Progress_Stamina.value = Stamina_Player
 	
 	# 4. Gerakkan Player
 	velocity = move_and_slide(velocity)

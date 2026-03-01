@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/universfield-computer-mouse-click-352734.mp3-a4073126db865b5f28e5383a3768629e.mp3str"
+
+[deps]
+
+source_file="res://Main_Menu/Audio MP3/universfield-computer-mouse-click-352734.mp3"
+dest_files=[ "res://.import/universfield-computer-mouse-click-352734.mp3-a4073126db865b5f28e5383a3768629e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

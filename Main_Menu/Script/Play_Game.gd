@@ -5,6 +5,9 @@ extends Node
 # var a = 2
 # var b = "text"
 
+onready var Button_Box = $"../../Box1"
+onready var AudioMP3 = $"../AudioStreamPlayer2D"
+onready var AnimationFade = $"../../AnimationPlayer"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,3 +21,24 @@ func _ready():
 
 func _on_Play_Game_pressed():
 	print("Game dimulai")
+	AudioMP3.play() # Suara Boom mulai
+	
+	# Jalankan animasi fade out
+	AnimationFade.play_backwards("fade_panel")
+	AnimationFade.play_backwards("fade")
+	
+	# JURUS RAHASIA: Tunggu animasinya selesai (bukan audionya)
+	# Pastikan "fade" adalah nama animasi terakhir yang menutupi layar
+	yield(AnimationFade, "animation_finished")
+	
+	# Pindah scene tepat saat layar sudah gelap
+	get_tree().change_scene("res://Player Movement/Scene/PlayerScene.tscn")
+
+
+
+func _on_Play_Game_mouse_entered():
+	Button_Box.visible = true
+
+
+func _on_Play_Game_mouse_exited():
+	Button_Box.visible = false
