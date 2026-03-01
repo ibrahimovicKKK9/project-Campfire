@@ -101,4 +101,4 @@ func _on_AreaKill_body_entered(body):
 # ================= FLIP =================
 func update_flip():
 	if direction != 0:
-		$Sprite.flip_h = direction < 0
+		$AnimatedSprite.flip_h = direction > 0
